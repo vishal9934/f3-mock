@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <!-- Create an input field and take the name of the user through that input field and
+    have a submit button. Use cookies to store the name. Whenever the page is
+    reloaded, write a message saying “Hi There - ${name}” where name is fetched
+    from the cookie you savedUI -->
+
+    <form>
+      <label for="name">Enter Your Name</label>
+      <input type="text" id="name" />
+      <button type="submit" id="btn">submit</button>
+    </form>
+    <div id="message"></div>
+    <script>
+      
+      function setCookie(){
+        var name = document.getElementById("name").value;
+        console.log(name)
+        document.cookie=document.getElementById("message").innerHTML=`hi there is : ${name}`;
+      }
+         document.querySelector("form").addEventListener("click",(e)=>{
+            e.preventDefault();
+            setCookie();
+         })
+    </script>
+  </body>
+</html>
+
+

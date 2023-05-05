@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 20px 0;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  </style>
+<body>
+  <!-- Send a GET Fetch Req -(https://dummyjson.com/products) and show the data
+  you receive in a list view as shown in the gif.Handle using promise chaining or
+  using async await -->
+
+    <h1>Product List</h1>
+    <ul id="product-list"></ul>
+
+    <script>
+        // write your code here
+       // solution by using promise chaining
+        fetch('https://dummyjson.com/products')
+        .then((res) => res.json())
+       .then((data) => {
+        var productList = document.getElementById('product-list');
+        data.products.forEach((item)=>{
+            var li = document.createElement('li');
+            li.innerHTML = `<h2>${item.title}</h2>`
+            li.innerHTML += `<p>${item.description}</p>`;
+            li.innerHTML+=   `price:${item.price}`
+            li.innerHTML+=`<span> rating ${item.rating} </span>`
+            productList.appendChild(li)
+        })
+       })
+       .catch((error)=
+       console.log(error))
+  
+        // by using async await
+
+        async function product(){
+           let res=await fetch('https://dummyjson.com/products')
+           let data=await res.json()
+           console.log(data)
+           let productList = document.getElementById('product-list');
+           data.products.forEach((item)=>{
+            var li = document.createElement('li');
+            li.innerHTML=`<h2>${item.title}</h2>`
+            li.innerHTML+=`<p>${item.description}</p>`
+            li.innerHTML+=`price:${item.price}`
+            li.innerHTML+=`<span> rating ${item.rating} </span>`
+            productList.appendChild(li)
+           })
+        }
+
+         product();
+      </script>
+    
+</body>
+</html>

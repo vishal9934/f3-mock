@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- Create a function which returns a promise and returns a random number after
+2500 milliseconds -->
+
+
+
+    <h2 >Random Number:<span id="random-number"></span></h2>
+<script>
+    var randomNumber = document.getElementById("random-number");
+
+       function output(){
+        return new Promise((resolve)=>{
+            setTimeout(()=>{
+                let random=Math.floor(Math.random()*100);
+                resolve(random);
+            },2500)
+        })
+    //     .then((data)=>{
+    //       console.log(data)
+    //       randomNumber.innerHTML=data;
+    //    })
+
+       }
+       async function randomm(){
+            let res= await output();
+            randomNumber.innerHTML=res;
+    }
+    randomm()
+      
+
+
+</script>
+</body>
+</html>
